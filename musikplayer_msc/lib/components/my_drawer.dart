@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musikplayer_msc/pages/settings_page.dart';
+import 'package:musikplayer_msc/pages/song_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -11,36 +12,50 @@ class MyDrawer extends StatelessWidget {
       child: Column(
         children: [
           DrawerHeader(
-            child: Center(child: Icon(
-              Icons.music_note,
-              size: 40,
-              color: Theme.of(context).colorScheme.inversePrimary,
+            child: Center(
+              child: Icon(
+                Icons.music_note,
+                size: 40,
+                color: Theme.of(context).colorScheme.inversePrimary,
               ),
             ),
           ),
-
           Padding(
-            padding:const EdgeInsets.only(left: 25.0, top: 25),
+            padding: const EdgeInsets.only(left: 25.0, top: 25),
             child: ListTile(
               title: const Text("H O M E"),
               leading: const Icon(Icons.home),
-              onTap:() => Navigator.pop(context),
+              onTap: () => Navigator.pop(context),
             ),
           ),
-
+          Padding(
+            padding: const EdgeInsets.only(left: 25.0, top: 0),
+            child: ListTile(
+                title: const Text("S O N G   P A G E"),
+                leading: const Icon(Icons.music_note),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SongPage(),
+                    ),
+                  );
+                }),
+          ),
           Padding(
             padding: EdgeInsets.only(left: 25.0, top: 0),
             child: ListTile(
               title: const Text("S E T T I N G S"),
               leading: const Icon(Icons.settings),
-              onTap:(){
+              onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
-                  context, 
+                  context,
                   MaterialPageRoute(
-                    builder: (context) =>SettingsPage(),
+                    builder: (context) => SettingsPage(),
                   ),
-                  );
+                );
               },
             ),
           ),
